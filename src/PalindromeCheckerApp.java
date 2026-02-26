@@ -9,7 +9,7 @@ public class PalindromeCheckerApp {
         for (int i = word.length() - 1; i >= 0; i--) {
             reversedWord += word.charAt(i);
         }
-        if (word.equalsIgnoreCase(reversedWord)) {
+        if (word.equals(reversedWord)) {
             System.out.println(word + " is a palindrome.");
         } else {
             System.out.println(word + " is not a palindrome.");
