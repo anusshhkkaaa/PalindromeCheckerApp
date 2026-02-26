@@ -5,11 +5,19 @@ public class PalindromeCheckerApp {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a word to check: ");
         String word = scanner.nextLine();
-        String reversedWord = "";
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversedWord += word.charAt(i);
+        char[] chars = word.toCharArray();
+        int start = 0;
+        int end = chars.length - 1;
+        boolean isPalindrome = true;
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
-        if (word.equals(reversedWord)) {
+        if (isPalindrome) {
             System.out.println(word + " is a palindrome.");
         } else {
             System.out.println(word + " is not a palindrome.");
