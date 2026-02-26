@@ -1,28 +1,31 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindromeCheckerApp {
+    public static boolean isPalindrome(String input) {
+        Stack<Character> stack = new Stack<>();
+        for (char ch : input.toCharArray()) {
+            stack.push(ch);
+        }
+        StringBuilder reversed = new StringBuilder();
+        while (!stack.isEmpty()) {
+            reversed.append(stack.pop());
+        }
+        return input.equals(reversed.toString());
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a word to check: ");
-        String word = scanner.nextLine();
-        char[] chars = word.toCharArray();
-        int start = 0;
-        int end = chars.length - 1;
-        boolean isPalindrome = true;
-        while (start < end) {
-            if (chars[start] != chars[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-        if (isPalindrome) {
-            System.out.println(word + " is a palindrome.");
+        System.out.println("=== UC5: Stack-Based Palindrome Checker ===");
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        if (isPalindrome(input)) {
+            System.out.println("Result: \"" + input + "\" is a palindrome.");
         } else {
-            System.out.println(word + " is not a palindrome.");
+            System.out.println("Result: \"" + input + "\" is NOT a palindrome.");
         }
         scanner.close();
     }
 }
+
 
